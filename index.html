@@ -1,187 +1,288 @@
-# GitHub Pages 網站建立完整指南
-
-## 步驟 1：建立 GitHub Repository
-
-1. **登入 GitHub** 並點擊右上角的 "+" 符號，選擇 "New repository"
-2. **設定 Repository 名稱**：
-   - 如果要建立個人主頁：`你的用戶名.github.io`（例：`ktwyj.github.io`）
-   - 如果要建立專案網站：任何名稱（例：`lavina-website`）
-3. **設定為 Public**（免費方案需要公開）
-4. **勾選 "Add a README file"**
-5. 點擊 **"Create repository"**
-
-## 步驟 2：上傳網站檔案
-
-### 方法一：直接在 GitHub 網頁上操作
-1. 在 repository 頁面點擊 **"Add file" > "Create new file"**
-2. 輸入檔案名稱：`index.html`
-3. 將您的 HTML 代碼貼入編輯器
-4. 點擊 **"Commit new file"**
-
-### 方法二：使用 Git 命令列
-```bash
-# 複製 repository 到本地
-git clone https://github.com/你的用戶名/repository名稱.git
-
-# 進入資料夾
-cd repository名稱
-
-# 添加檔案
-# 將 index.html 和其他檔案放入資料夾
-
-# 提交變更
-git add .
-git commit -m "Add website files"
-git push origin main
-```
-
-## 步驟 3：建立隱私權政策頁面
-
-### 建立獨立的隱私權 Repository
-1. 建立新的 repository，命名為：`你的用戶名-privacy-policy`
-2. 建立 `index.html` 檔案，內容如下：
-
-```html
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LAVINA - 隱私權政策</title>
+    <title>LAVINA Digital Solutions - Pinterest自動化工具</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            max-width: 800px;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            color: #333;
         }
-        .header {
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             text-align: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #e60023;
         }
-        h1 { color: #e60023; }
-        h2 { color: #bd081c; margin-top: 2rem; }
-        .last-updated { 
-            color: #666; 
-            font-style: italic; 
-            text-align: center; 
+        
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #e60023, #bd081c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .hero {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 3rem;
             margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #e60023;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: #555;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            color: #e60023;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .cta-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #e60023, #bd081c);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+            margin: 0.5rem;
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #e60023;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .footer-links {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: #e60023;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 500;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 10px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>LAVINA Digital Solutions</h1>
-        <h2>隱私權政策</h2>
-        <p class="last-updated">最後更新日期：2025年1月</p>
+    <div class="container">
+        <header>
+            <div class="logo">LAVINA</div>
+            <div class="tagline">Creative Design & Pinterest Management Solutions</div>
+            <p>專業的Pinterest創作設計與圖板管理工具</p>
+        </header>
+        
+        <section class="hero">
+            <h1>🎨 LAVINA Pinterest Creative Assistant</h1>
+            <p>為設計師、創作者和內容策展人設計的智能Pinterest管理工具。協助您創作精美的設計圖板，策劃inspiring內容，讓您專注於創意發想和視覺美學。</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">2-3</div>
+                    <div class="stat-label">小時/天 節省時間</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">滿意用戶</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">Pins已建立</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">系統穩定性</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>創意主題搜尋</h3>
+                <p>輸入設計主題和創意關鍵字，智能搜尋相關的視覺內容和設計靈感，找到最符合您創作願景的素材。</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>設計Pin創作助手</h3>
+                <p>協助建立高品質的Pinterest Pins，包含優化的視覺效果、創意標題和精美描述，確保最佳的視覺呈現。</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📂</div>
+                <h3>主題圖板管理</h3>
+                <p>協助將Pins依主題分類到指定的Pinterest圖板，創造視覺一致性，提升整體美感和使用者體驗。</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>創作流程優化</h3>
+                <p>簡化設計研究和內容策劃流程，大幅提升創作效率，讓您有更多時間專注於創意發想和視覺設計。</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>創作安全保障</h3>
+                <p>使用Pinterest官方API，確保帳戶安全。本地處理創作資料，不儲存敏感資訊，完全保護您的創作隱私。</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3>視覺效果追蹤</h3>
+                <p>詳細的圖板統計和視覺效果分析，幫助您優化設計策略，提升Pinterest影響力和互動率。</p>
+            </div>
+        </section>
+        
+        <section class="cta-section">
+            <h2>🎉 開始您的Pinterest創意設計之旅</h2>
+            <p>加入數百位成功的設計師和內容創作者的行列</p>
+            <a href="mailto:contact@lavina-digital.com" class="cta-button">聯絡我們</a>
+            <a href="https://github.com/ktwyj" class="cta-button">查看項目</a>
+        </section>
+        
+        <footer>
+            <div class="footer-links">
+                <a href="https://ktwyj.github.io/LAVINA-privacy-policy">隱私權政策</a>
+                <a href="mailto:contact@lavina-digital.com">聯絡我們</a>
+                <a href="https://github.com/ktwyj">GitHub</a>
+            </div>
+            <p>&copy; 2025 LAVINA Digital Solutions. 版權所有.</p>
+            <p>專業的Pinterest創作設計與圖板管理解決方案</p>
+        </footer>
     </div>
-
-    <h2>1. 資料收集</h2>
-    <p>我們重視您的隱私權。LAVINA Pinterest 創作助手工具收集的資料類型包括：</p>
-    <ul>
-        <li>Pinterest 帳戶的基本資訊（用戶名稱、頭像）</li>
-        <li>圖板和 Pin 的公開資訊</li>
-        <li>使用工具時的操作記錄</li>
-    </ul>
-
-    <h2>2. 資料使用</h2>
-    <p>收集的資料僅用於：</p>
-    <ul>
-        <li>提供 Pinterest 管理和創作服務</li>
-        <li>改善工具功能和使用者體驗</li>
-        <li>提供技術支援</li>
-    </ul>
-
-    <h2>3. 資料安全</h2>
-    <p>我們採取以下措施保護您的資料：</p>
-    <ul>
-        <li>使用 Pinterest 官方 API，確保資料傳輸安全</li>
-        <li>本地處理資料，不在伺服器端儲存敏感資訊</li>
-        <li>定期更新安全措施</li>
-    </ul>
-
-    <h2>4. 第三方服務</h2>
-    <p>本工具整合 Pinterest API 服務，請同時參閱 <a href="https://policy.pinterest.com/privacy-policy">Pinterest 隱私權政策</a>。</p>
-
-    <h2>5. 聯絡我們</h2>
-    <p>如對隱私權政策有任何問題，請聯絡：</p>
-    <p>Email: <a href="mailto:contact@lavina-digital.com">contact@lavina-digital.com</a></p>
-    <p>GitHub: <a href="https://github.com/ktwyj">https://github.com/ktwyj</a></p>
-
-    <footer style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #eee; text-align: center; color: #666;">
-        <p>&copy; 2025 LAVINA Digital Solutions. 版權所有.</p>
-    </footer>
 </body>
 </html>
-```
-
-## 步驟 4：啟用 GitHub Pages
-
-1. 進入您的 repository 設定頁面
-2. 滾動到 **"Pages"** 區段
-3. 在 **"Source"** 下選擇 **"Deploy from a branch"**
-4. 選擇 **"main"** 分支和 **"/ (root)"** 資料夾
-5. 點擊 **"Save"**
-
-## 步驟 5：取得網站網址
-
-### 主要網站網址：
-- 個人主頁：`https://你的用戶名.github.io`
-- 專案網站：`https://你的用戶名.github.io/repository名稱`
-
-### 隱私權頁面網址：
-- `https://你的用戶名.github.io/你的用戶名-privacy-policy`
-
-## 步驟 6：連結隱私權頁面
-
-在您的主要網站 HTML 中，將隱私權連結更新為：
-```html
-<a href="https://你的用戶名.github.io/你的用戶名-privacy-policy">隱私權政策</a>
-```
-
-## 進階設定
-
-### 自訂網域（可選）
-1. 購買網域名稱
-2. 在 DNS 設定中添加 CNAME 記錄指向 `你的用戶名.github.io`
-3. 在 repository 根目錄建立 `CNAME` 檔案，內容為您的網域名稱
-4. 在 Pages 設定中啟用 HTTPS
-
-### 資料夾結構建議
-```
-your-repository/
-├── index.html          # 主頁
-├── css/
-│   └── style.css      # 樣式檔案
-├── js/
-│   └── script.js      # JavaScript 檔案
-├── images/            # 圖片資料夾
-├── CNAME             # 自訂網域設定（可選）
-└── README.md         # 專案說明
-```
-
-## 注意事項
-
-1. **更新時間**：GitHub Pages 通常需要幾分鐘來部署變更
-2. **檔案大小限制**：單一檔案最大 100MB，整個 repository 最大 1GB
-3. **流量限制**：每月 100GB 流量限制
-4. **HTTPS**：GitHub Pages 自動提供 HTTPS 加密
-5. **快取**：瀏覽器可能會快取舊版本，可以使用 Ctrl+F5 強制重新整理
-
-## 常見問題解決
-
-### 網站無法訪問
-- 檢查 Pages 設定是否正確啟用
-- 確認 `index.html` 檔案存在於根目錄
-- 等待幾分鐘讓 GitHub 完成部署
-
-### 隱私權頁面 404 錯誤
-- 確認隱私權 repository 已啟用 Pages
-- 檢查連結網址是否正確
-- 確認檔案名稱為 `index.html`
-
-這樣您就可以建立一個完整的 GitHub Pages 網站，並包含獨立的隱私權政策頁面！
