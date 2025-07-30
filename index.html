@@ -1,0 +1,187 @@
+# GitHub Pages 網站建立完整指南
+
+## 步驟 1：建立 GitHub Repository
+
+1. **登入 GitHub** 並點擊右上角的 "+" 符號，選擇 "New repository"
+2. **設定 Repository 名稱**：
+   - 如果要建立個人主頁：`你的用戶名.github.io`（例：`ktwyj.github.io`）
+   - 如果要建立專案網站：任何名稱（例：`lavina-website`）
+3. **設定為 Public**（免費方案需要公開）
+4. **勾選 "Add a README file"**
+5. 點擊 **"Create repository"**
+
+## 步驟 2：上傳網站檔案
+
+### 方法一：直接在 GitHub 網頁上操作
+1. 在 repository 頁面點擊 **"Add file" > "Create new file"**
+2. 輸入檔案名稱：`index.html`
+3. 將您的 HTML 代碼貼入編輯器
+4. 點擊 **"Commit new file"**
+
+### 方法二：使用 Git 命令列
+```bash
+# 複製 repository 到本地
+git clone https://github.com/你的用戶名/repository名稱.git
+
+# 進入資料夾
+cd repository名稱
+
+# 添加檔案
+# 將 index.html 和其他檔案放入資料夾
+
+# 提交變更
+git add .
+git commit -m "Add website files"
+git push origin main
+```
+
+## 步驟 3：建立隱私權政策頁面
+
+### 建立獨立的隱私權 Repository
+1. 建立新的 repository，命名為：`你的用戶名-privacy-policy`
+2. 建立 `index.html` 檔案，內容如下：
+
+```html
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAVINA - 隱私權政策</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e60023;
+        }
+        h1 { color: #e60023; }
+        h2 { color: #bd081c; margin-top: 2rem; }
+        .last-updated { 
+            color: #666; 
+            font-style: italic; 
+            text-align: center; 
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>LAVINA Digital Solutions</h1>
+        <h2>隱私權政策</h2>
+        <p class="last-updated">最後更新日期：2025年1月</p>
+    </div>
+
+    <h2>1. 資料收集</h2>
+    <p>我們重視您的隱私權。LAVINA Pinterest 創作助手工具收集的資料類型包括：</p>
+    <ul>
+        <li>Pinterest 帳戶的基本資訊（用戶名稱、頭像）</li>
+        <li>圖板和 Pin 的公開資訊</li>
+        <li>使用工具時的操作記錄</li>
+    </ul>
+
+    <h2>2. 資料使用</h2>
+    <p>收集的資料僅用於：</p>
+    <ul>
+        <li>提供 Pinterest 管理和創作服務</li>
+        <li>改善工具功能和使用者體驗</li>
+        <li>提供技術支援</li>
+    </ul>
+
+    <h2>3. 資料安全</h2>
+    <p>我們採取以下措施保護您的資料：</p>
+    <ul>
+        <li>使用 Pinterest 官方 API，確保資料傳輸安全</li>
+        <li>本地處理資料，不在伺服器端儲存敏感資訊</li>
+        <li>定期更新安全措施</li>
+    </ul>
+
+    <h2>4. 第三方服務</h2>
+    <p>本工具整合 Pinterest API 服務，請同時參閱 <a href="https://policy.pinterest.com/privacy-policy">Pinterest 隱私權政策</a>。</p>
+
+    <h2>5. 聯絡我們</h2>
+    <p>如對隱私權政策有任何問題，請聯絡：</p>
+    <p>Email: <a href="mailto:contact@lavina-digital.com">contact@lavina-digital.com</a></p>
+    <p>GitHub: <a href="https://github.com/ktwyj">https://github.com/ktwyj</a></p>
+
+    <footer style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #eee; text-align: center; color: #666;">
+        <p>&copy; 2025 LAVINA Digital Solutions. 版權所有.</p>
+    </footer>
+</body>
+</html>
+```
+
+## 步驟 4：啟用 GitHub Pages
+
+1. 進入您的 repository 設定頁面
+2. 滾動到 **"Pages"** 區段
+3. 在 **"Source"** 下選擇 **"Deploy from a branch"**
+4. 選擇 **"main"** 分支和 **"/ (root)"** 資料夾
+5. 點擊 **"Save"**
+
+## 步驟 5：取得網站網址
+
+### 主要網站網址：
+- 個人主頁：`https://你的用戶名.github.io`
+- 專案網站：`https://你的用戶名.github.io/repository名稱`
+
+### 隱私權頁面網址：
+- `https://你的用戶名.github.io/你的用戶名-privacy-policy`
+
+## 步驟 6：連結隱私權頁面
+
+在您的主要網站 HTML 中，將隱私權連結更新為：
+```html
+<a href="https://你的用戶名.github.io/你的用戶名-privacy-policy">隱私權政策</a>
+```
+
+## 進階設定
+
+### 自訂網域（可選）
+1. 購買網域名稱
+2. 在 DNS 設定中添加 CNAME 記錄指向 `你的用戶名.github.io`
+3. 在 repository 根目錄建立 `CNAME` 檔案，內容為您的網域名稱
+4. 在 Pages 設定中啟用 HTTPS
+
+### 資料夾結構建議
+```
+your-repository/
+├── index.html          # 主頁
+├── css/
+│   └── style.css      # 樣式檔案
+├── js/
+│   └── script.js      # JavaScript 檔案
+├── images/            # 圖片資料夾
+├── CNAME             # 自訂網域設定（可選）
+└── README.md         # 專案說明
+```
+
+## 注意事項
+
+1. **更新時間**：GitHub Pages 通常需要幾分鐘來部署變更
+2. **檔案大小限制**：單一檔案最大 100MB，整個 repository 最大 1GB
+3. **流量限制**：每月 100GB 流量限制
+4. **HTTPS**：GitHub Pages 自動提供 HTTPS 加密
+5. **快取**：瀏覽器可能會快取舊版本，可以使用 Ctrl+F5 強制重新整理
+
+## 常見問題解決
+
+### 網站無法訪問
+- 檢查 Pages 設定是否正確啟用
+- 確認 `index.html` 檔案存在於根目錄
+- 等待幾分鐘讓 GitHub 完成部署
+
+### 隱私權頁面 404 錯誤
+- 確認隱私權 repository 已啟用 Pages
+- 檢查連結網址是否正確
+- 確認檔案名稱為 `index.html`
+
+這樣您就可以建立一個完整的 GitHub Pages 網站，並包含獨立的隱私權政策頁面！
